@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Quicksand', sans-serif;
+    background-color: #F0ECE3;
+    height: auto;
+    width: 100vw;
+}
+
+header{
+    padding:15px;
+    background-color: #C7B198;
+    color: #F0ECE3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    height: 15vh;
+    
+}
+
+.main{
+    padding: 20px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "element1 element2 element3"
+                        "element4 element5 element6";
+
+}
+
+
+#boton-carrito{
+    background-color: #F0ECE3;
+    color: #C7B198;
+    font-size: 25px;
+    padding: 10px;
+    align-items: baseline;
+    justify-content: center;
+    align-content: center;
+    border-color: #F0ECE3;
+    
+}
+
+a{
+    text-decoration: none;
+    color: #406882;
+}
+
+.card-title{
+    font-weight: bolder;
+}
+
+.btn-primary{
+    background-color: #406882;
+    border-color: #406882;
+}
+
+.modal-content{
+    background-color: #F0ECE3;
+}
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.productoEnCarrito{
+    padding: 5px 0px 5px 0px;
+}
+
+.precioProducto{
+    padding-left: 20px;
+}
+
+
+footer{
+    padding: 20px;
+    background-color: #C7B198;
+    display: flex;
+    justify-content: center;
+
+}
