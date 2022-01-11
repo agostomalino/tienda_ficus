@@ -1,0 +1,62 @@
+[
+    {
+       "id":1,
+       "nombre":"Taza Zimbabwe",
+       "color":"azul",
+       "precio":1500,
+       "tamaño":"10 cm altura",
+       "img":"/fotosProduct/taza.jpeg",
+       "stock":0,
+       "cantidad":1
+    },
+    {
+       "id":2,
+       "nombre":"Hornito Mozambique",
+       "color":"azul",
+       "precio":2000,
+       "tamaño":"12 cm altura",
+       "img":"/fotosProduct/hornito.jpeg",
+       "stock":0,
+       "cantidad":1
+    },
+    {
+       "id":3,
+       "nombre":"Fuente Marley",
+       "color":"azul y blanca",
+       "precio":3500,
+       "tamaño":"35cm largo",
+       "img":"/fotosProduct/fuente.jpeg",
+       "stock":0,
+       "cantidad":1
+    },
+    {
+       "id":4,
+       "nombre":"Mate Zimbabwe",
+       "color":"azul",
+       "precio":1200,
+       "tamaño":"9cm altura",
+       "img":"/fotosProduct/mate.jpeg",
+       "stock":0,
+       "cantidad":1
+    },
+    {
+       "id":5,
+       "nombre":"Pipa Ficus",
+       "color":"azul",
+       "precio":990,
+       "tamaño":"7.5cm largo",
+       "img":"/fotosProduct/pipa.jpeg",
+       "stock":0,
+       "cantidad":1
+    },
+    {
+       "id":6,
+       "nombre":"Vela Hortensia",
+       "color":"azul",
+       "precio":2700,
+       "tamaño":"50 cm diametro",
+       "img":"/fotosProduct/vela.jpeg",
+       "stock":0,
+       "cantidad":1
+    }
+ ]

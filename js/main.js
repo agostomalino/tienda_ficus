@@ -15,6 +15,7 @@ const precioTotal = document.getElementById('precioTotal')
 $.getJSON('/stock.json', function (data){
     data.forEach(element => arrayProductos.push(element))
     mostrarProductos(arrayProductos);
+    recuperar()
 })
 
 //////////////////////////////////
@@ -68,12 +69,18 @@ function agregarAlCarro(id){
         
         let productoAgregar = arrayProductos.find(element => element.id == id) //busca el boton para agregar al carro y devuelve el obj de ese producto
         carrito.push(productoAgregar)
-        /// 
-        
-        actualizarCarrito()
 
-        // logica para mostrar productos en el carrito
-        let divCreado = document.createElement('div')
+        actualizarCarrito()
+        mostrarelCarrito(productoAgregar)
+    }
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+}
+
+/////////////////////////////logica mostrar y eliminar producto del carrito separada
+
+function mostrarelCarrito(productoAgregar){
+    
+    let divCreado = document.createElement('div')
         divCreado.classList.add('productoEnCarrito')
         divCreado.innerHTML = `
                         <p>${productoAgregar.nombre}</p>
@@ -83,16 +90,13 @@ function agregarAlCarro(id){
         `
         contenedorCarrito.appendChild(divCreado)
 
-        eliminarDelCarrito()
-        //Eliminar productos del carrito
-        /*
         let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
 
         btnEliminar.addEventListener('click', () =>{
             if(productoAgregar.cantidad ==1){
                 btnEliminar.parentElement.remove()
                 carrito = carrito.filter(element => element.id != productoAgregar.id)
-                
+                localStorage.setItem('carrito', JSON.stringify(carrito))
                 actualizarCarrito()
 
             }else{
@@ -101,38 +105,25 @@ function agregarAlCarro(id){
                                     <p id="cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p> 
                 `
                 actualizarCarrito()
+                localStorage.setItem('carrito', JSON.stringify(carrito))
             }
 
         }) 
-        */
+
+
+}
+
+function recuperar(){
+    let recuperoLS = JSON.parse(localStorage.getItem('carrito'))
+    if(recuperoLS){
+        recuperoLS.forEach(item =>{
+            carrito.push(item)
+            mostrarrlCarrito(item)
+            actualizarCarrito()
+        })
     }
-
 }
 
-/////////////////////////////logica eliminar producto del carrito separada
-
-function eliminarDelCarrito(id){
-    
-    let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
-    btnEliminar.addEventListener('click',() => {
-        if(productoAgregar.cantidad == 1){
-            btnEliminar.parentElement.remove()
-            carrito = carrito.filter(element => element.id != productoAgregar.id)
-
-            actualizarCarrito()
-        }else{
-            productoAgregar.cantidad = productoAgregar.cantidad -1
-            document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `
-                                    <p id= "cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p>
-                                    `
-            actualizarCarrito()
-
-        }
-    })
-
-
-
-}
 
 
 /////////////////////////////
@@ -166,6 +157,5 @@ $('#btnComprar').on('click',() => {
 })
 //funcion para que al comprar disminuya el numero de stock en el arrayProductos 
 //que en el modal de carrito se muestre lo ya almacenado en el storage///// carrito = JSON.parse(localStorage.getItem('carrito'))
-
 
 
