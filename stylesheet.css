@@ -111,3 +111,10 @@ footer{
     justify-content: center;
 
 }
+
+h2{
+    color: #C7B198;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
