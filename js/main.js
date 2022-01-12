@@ -12,7 +12,7 @@ const precioTotal = document.getElementById('precioTotal')
 
 
 ///////////////////////////////metodo get ajax para mostrar productos desde un JSON local
-$.getJSON('/stock.json', function (data){
+$.getJSON('/stock.json', function (data) {
     data.forEach(element => arrayProductos.push(element))
     mostrarProductos(arrayProductos);
     recuperar()
@@ -22,7 +22,7 @@ $.getJSON('/stock.json', function (data){
 
 
 
-function mostrarProductos(array){
+function mostrarProductos(array) {
     contenedorProductos.innerHTML = ''
 
     array.forEach(element => {
@@ -48,25 +48,25 @@ function mostrarProductos(array){
 
         let botonAgregar = document.getElementById(`boton${element.id}`)
 
-        botonAgregar.addEventListener('click', () =>{
-         agregarAlCarro(element.id)
-       })
+        botonAgregar.addEventListener('click', () => {
+            agregarAlCarro(element.id)
+        })
 
     });
 
 }
 
 /////////////////////////////
-function agregarAlCarro(id){
-    let verificar = carrito.find(element => element.id == id) 
-    if(verificar){
+function agregarAlCarro(id) {
+    let verificar = carrito.find(element => element.id == id)
+    if (verificar) {
         verificar.cantidad = verificar.cantidad + 1
-        document.getElementById(`cantidad${verificar.id}`).innerHTML = 
-                `<p id="cantidad${verificar.id}">Cantidad:${verificar.cantidad}</p>`
+        document.getElementById(`cantidad${verificar.id}`).innerHTML =
+            `<p id="cantidad${verificar.id}">Cantidad:${verificar.cantidad}</p>`
         actualizarCarrito()
-        
-    }else{
-        
+
+    } else {
+
         let productoAgregar = arrayProductos.find(element => element.id == id) //busca el boton para agregar al carro y devuelve el obj de ese producto
         carrito.push(productoAgregar)
 
@@ -78,45 +78,45 @@ function agregarAlCarro(id){
 
 /////////////////////////////logica mostrar y eliminar producto del carrito separada
 
-function mostrarelCarrito(productoAgregar){
-    
+function mostrarelCarrito(productoAgregar) {
+
     let divCreado = document.createElement('div')
-        divCreado.classList.add('productoEnCarrito')
-        divCreado.innerHTML = `
+    divCreado.classList.add('productoEnCarrito')
+    divCreado.innerHTML = `
                         <p>${productoAgregar.nombre}</p>
                         <p>Precio:$${productoAgregar.precio}</p>
                         <p id="cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p>
                         <button id="eliminar${productoAgregar.id}" type="button" class="btn btn-danger">Eliminar del carrito</button>
         `
-        contenedorCarrito.appendChild(divCreado)
+    contenedorCarrito.appendChild(divCreado)
 
-        let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
+    let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
 
-        btnEliminar.addEventListener('click', () =>{
-            if(productoAgregar.cantidad ==1){
-                btnEliminar.parentElement.remove()
-                carrito = carrito.filter(element => element.id != productoAgregar.id)
-                localStorage.setItem('carrito', JSON.stringify(carrito))
-                actualizarCarrito()
+    btnEliminar.addEventListener('click', () => {
+        if (productoAgregar.cantidad == 1) {
+            btnEliminar.parentElement.remove()
+            carrito = carrito.filter(element => element.id != productoAgregar.id)
+            localStorage.setItem('carrito', JSON.stringify(carrito))
+            actualizarCarrito()
 
-            }else{
-                productoAgregar.cantidad = productoAgregar.cantidad - 1
-                document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `
+        } else {
+            productoAgregar.cantidad = productoAgregar.cantidad - 1
+            document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `
                                     <p id="cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p> 
                 `
-                actualizarCarrito()
-                localStorage.setItem('carrito', JSON.stringify(carrito))
-            }
+            actualizarCarrito()
+            localStorage.setItem('carrito', JSON.stringify(carrito))
+        }
 
-        }) 
+    })
 
 
 }
 
-function recuperar(){
+function recuperar() {
     let recuperoLS = JSON.parse(localStorage.getItem('carrito'))
-    if(recuperoLS){
-        recuperoLS.forEach(item =>{
+    if (recuperoLS) {
+        recuperoLS.forEach(item => {
             carrito.push(item)
             mostrarrlCarrito(item)
             actualizarCarrito()
@@ -127,9 +127,9 @@ function recuperar(){
 
 
 /////////////////////////////
-function actualizarCarrito(){
-    contadorCarrito.innerText = carrito.reduce((acc, el)=> acc + el.cantidad, 0) // incrementa la cantidad de productos seleccionados
-    precioTotal.innerText = carrito.reduce((acc, el)=> acc + (el.precio * el.cantidad), 0 ) // multipica el precio por la cantidad de productos seleccionados
+function actualizarCarrito() {
+    contadorCarrito.innerText = carrito.reduce((acc, el) => acc + el.cantidad, 0) // incrementa la cantidad de productos seleccionados
+    precioTotal.innerText = carrito.reduce((acc, el) => acc + (el.precio * el.cantidad), 0) // multipica el precio por la cantidad de productos seleccionados
 
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -137,25 +137,23 @@ function actualizarCarrito(){
 }
 
 //////////////////////////// Simulacion de compra Ajax metodo POST
-botonComprar.innerHTML=`<button id="btnComprar" class="btn btn-primary">Comprar</button>`
+botonComprar.innerHTML = `<button id="btnComprar" class="btn btn-primary">Comprar</button>`
 
-$('#btnComprar').on('click',() => {
-    $.post("http://jsonplaceholder.typicode.com/posts", JSON.stringify(carrito), function(data,estado){
-    console.log(data)    
-    if(estado){
-        $('#carritoContenedor').empty()
-        $('#carritoContenedor').append('<p>Su compra ha sido realizada</p>')
+$('#btnComprar').on('click', () => {
+    $.post("http://jsonplaceholder.typicode.com/posts", JSON.stringify(carrito), function (data, estado) {
+        console.log(data)
+        if (estado) {
+            $('#carritoContenedor').empty()
+            $('#carritoContenedor').append('<p>Su compra ha sido realizada</p>')
 
-        carrito = []
-        localStorage.clear()
-        actualizarCarrito()
+            carrito = []
+            localStorage.clear()
+            actualizarCarrito()
 
-    }
+        }
 
 
     })
 })
 //funcion para que al comprar disminuya el numero de stock en el arrayProductos 
 //que en el modal de carrito se muestre lo ya almacenado en el storage///// carrito = JSON.parse(localStorage.getItem('carrito'))
-
-

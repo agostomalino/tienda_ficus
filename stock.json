@@ -58,5 +58,75 @@
        "img":"/fotosProduct/vela.jpeg",
        "stock":0,
        "cantidad":1
-    }
+    },
+    {
+      "id":7,
+      "nombre":"Florero Lua",
+      "color":"mostaza y blanco",
+      "precio":3400,
+      "tamaño":"12 cm altura",
+      "img":"/fotosProduct/florero1.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":8,
+      "nombre":"Fuente Red",
+      "color":"Rojo, blanco",
+      "precio":4900,
+      "tamaño":"14 cm largo",
+      "img":"/fotosProduct/fuenteRed.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":9,
+      "nombre":"Maceta Ocean",
+      "color":"azules",
+      "precio":2800,
+      "tamaño":"10 cm diametro",
+      "img":"/fotosProduct/macetita.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":10,
+      "nombre":"Mate América",
+      "color":"negro",
+      "precio":2000,
+      "tamaño":"9cm altura",
+      "img":"/fotosProduct/matenegro.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":11,
+      "nombre":"Pipa Sudáfrica",
+      "color":"mostaza",
+      "precio":2300,
+      "tamaño":"10cm largo",
+      "img":"/fotosProduct/pipa1.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":12,
+      "nombre":"Tazas Africa",
+      "color":"marrón",
+      "precio":2400,
+      "tamaño":"12,5cm altura",
+      "img":"/fotosProduct/tazas3.jpeg",
+      "stock":0,
+      "cantidad":1
+   },
+   {
+      "id":13,
+      "nombre":"Vela Europa",
+      "color":"violeta",
+      "precio":3000,
+      "tamaño":"8cm altura",
+      "img":"/fotosProduct/velaVioleta.jpeg",
+      "stock":0,
+      "cantidad":1
+   }
  ]

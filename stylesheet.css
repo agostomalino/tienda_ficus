@@ -6,8 +6,10 @@
 body{
     font-family: 'Quicksand', sans-serif;
     background-color: #F0ECE3;
+    color: #1B2021;
     height: auto;
     width: 100vw;
+    transition: background-color 700ms ease;
 }
 
 header{
@@ -19,7 +21,32 @@ header{
     align-items: center;
     font-size: 25px;
     height: 15vh;
+    opacity: 80%;
     
+}
+
+.darkMode{
+    background-color:#483434;
+    color:#C7B198;
+}
+
+nav{
+    background-color: #C7B198;
+    opacity: 80%;
+}
+.nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 1em;
+    
+}
+.nav li{
+    margin-top: .5em;
+}
+
+.carousel-item{
+    max-height: 80vh;
 }
 
 .main{
@@ -43,6 +70,10 @@ header{
 a{
     text-decoration: none;
     color: #406882;
+}
+
+.card{
+   margin-top: 1rem; 
 }
 
 .card-title{
