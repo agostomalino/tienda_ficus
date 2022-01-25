@@ -2,6 +2,7 @@
     {
        "id":1,
        "nombre":"Taza Zimbabwe",
+       "tipo":"Tazas",
        "color":"azul",
        "precio":1500,
        "tamaño":"10 cm altura",
@@ -12,6 +13,7 @@
     {
        "id":2,
        "nombre":"Hornito Mozambique",
+       "tipo":"Hornitos",
        "color":"azul",
        "precio":2000,
        "tamaño":"12 cm altura",
@@ -22,6 +24,7 @@
     {
        "id":3,
        "nombre":"Fuente Marley",
+       "tipo":"Fuentes",
        "color":"azul y blanca",
        "precio":3500,
        "tamaño":"35cm largo",
@@ -32,6 +35,7 @@
     {
        "id":4,
        "nombre":"Mate Zimbabwe",
+       "tipo":"Mates",
        "color":"azul",
        "precio":1200,
        "tamaño":"9cm altura",
@@ -42,6 +46,7 @@
     {
        "id":5,
        "nombre":"Pipa Ficus",
+       "tipo":"Pipas",
        "color":"azul",
        "precio":990,
        "tamaño":"7.5cm largo",
@@ -52,6 +57,7 @@
     {
        "id":6,
        "nombre":"Vela Hortensia",
+       "tipo":"Velas",
        "color":"azul",
        "precio":2700,
        "tamaño":"50 cm diametro",
@@ -62,6 +68,7 @@
     {
       "id":7,
       "nombre":"Florero Lua",
+      "tipo":"Floreros",
       "color":"mostaza y blanco",
       "precio":3400,
       "tamaño":"12 cm altura",
@@ -72,6 +79,7 @@
    {
       "id":8,
       "nombre":"Fuente Red",
+      "tipo":"Fuentes",
       "color":"Rojo, blanco",
       "precio":4900,
       "tamaño":"14 cm largo",
@@ -82,6 +90,7 @@
    {
       "id":9,
       "nombre":"Maceta Ocean",
+      "tipo":"Macetas",
       "color":"azules",
       "precio":2800,
       "tamaño":"10 cm diametro",
@@ -92,6 +101,7 @@
    {
       "id":10,
       "nombre":"Mate América",
+      "tipo":"Mates",
       "color":"negro",
       "precio":2000,
       "tamaño":"9cm altura",
@@ -102,6 +112,7 @@
    {
       "id":11,
       "nombre":"Pipa Sudáfrica",
+      "tipo":"Pipas",
       "color":"mostaza",
       "precio":2300,
       "tamaño":"10cm largo",
@@ -112,6 +123,7 @@
    {
       "id":12,
       "nombre":"Tazas Africa",
+      "tipo":"Tazas",
       "color":"marrón",
       "precio":2400,
       "tamaño":"12,5cm altura",
@@ -122,6 +134,7 @@
    {
       "id":13,
       "nombre":"Vela Europa",
+      "tipo":"Velas",
       "color":"violeta",
       "precio":3000,
       "tamaño":"8cm altura",

@@ -10,6 +10,7 @@ const contadorCarrito = document.getElementById('contadorCarrito')
 const precioTotal = document.getElementById('precioTotal')
 
 
+const selecTipo = document.getElementById('selectTipo');
 
 ///////////////////////////////metodo get ajax para mostrar productos desde un JSON local
 $.getJSON('/stock.json', function (data) {
@@ -18,9 +19,18 @@ $.getJSON('/stock.json', function (data) {
     recuperar()
 })
 
-//////////////////////////////////
+
+selecTipo.addEventListener('click', () => {
+    if (selecTipo.value == 'Todos') {
+        mostrarProductos(arrayProductos)
+    } else {
+        mostrarProductos(arrayProductos.filter(element => element.tipo == selecTipo.value))
+    }
+})
 
 
+
+////////////////////////////////// MUESTRA PRODUCTOS EN EL DOM
 
 function mostrarProductos(array) {
     contenedorProductos.innerHTML = ''
@@ -56,22 +66,39 @@ function mostrarProductos(array) {
 
 }
 
-/////////////////////////////
+/////////////////////////////Agrega al carrito
 function agregarAlCarro(id) {
     let verificar = carrito.find(element => element.id == id)
     if (verificar) {
         verificar.cantidad = verificar.cantidad + 1
         document.getElementById(`cantidad${verificar.id}`).innerHTML =
             `<p id="cantidad${verificar.id}">Cantidad:${verificar.cantidad}</p>`
-        actualizarCarrito()
 
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'El producto se ha agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+        actualizarCarrito()
     } else {
 
         let productoAgregar = arrayProductos.find(element => element.id == id) //busca el boton para agregar al carro y devuelve el obj de ese producto
         carrito.push(productoAgregar)
 
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'El producto se ha agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
         actualizarCarrito()
         mostrarelCarrito(productoAgregar)
+
     }
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
@@ -97,6 +124,13 @@ function mostrarelCarrito(productoAgregar) {
             btnEliminar.parentElement.remove()
             carrito = carrito.filter(element => element.id != productoAgregar.id)
             localStorage.setItem('carrito', JSON.stringify(carrito))
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'El producto se ha eliminado del carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
             actualizarCarrito()
 
         } else {
@@ -104,6 +138,13 @@ function mostrarelCarrito(productoAgregar) {
             document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `
                                     <p id="cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p> 
                 `
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'El producto se ha eliminado del carrito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             actualizarCarrito()
             localStorage.setItem('carrito', JSON.stringify(carrito))
         }
