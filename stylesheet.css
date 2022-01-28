@@ -118,3 +118,12 @@ h2{
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+/* BUSCADOR DE ARTICULOS*/
+input{
+    width: 100vw;
+    padding: 10px;
+    outline: none;
+    border: 5px solid #CCD1E4;
+    font-weight: 600;
+}
+

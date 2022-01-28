@@ -5,13 +5,33 @@ let arrayProductos = [];
 const contenedorProductos = document.getElementById('contenedorProductos')
 const contenedorCarrito = document.getElementById('carritoContenedor')
 const botonComprar = document.getElementById('comprar');
-
 const contadorCarrito = document.getElementById('contadorCarrito')
 const precioTotal = document.getElementById('precioTotal')
+const buscador = document.getElementById('buscador');
 
 
-const selecTipo = document.getElementById('selectTipo');
+// Buscador filtro de articulos en la web
+buscador.addEventListener('change', (e) => {
+    
+    let valorCapturado = e.target.value.toLowerCase();
+    console.log(valorCapturado)
+    console.log(arrayProductos.filter(producto =>producto.tipo))
+    if(valorCapturado == 'todos' || valorCapturado == ""){
+        mostrarProductos(arrayProductos)
+    }else{
+        mostrarProductos(arrayProductos.filter(producto => producto.tipo.toLowerCase() == valorCapturado))
+    }
+})
 
+buscador.addEventListener('keyup', (e)=>{
+    if (e.key === "Escape") {
+        e.target.value = ""
+        mostrarProductos(arrayProductos)
+    }                  
+})
+                    
+                    
+                    
 ///////////////////////////////metodo get ajax para mostrar productos desde un JSON local
 $.getJSON('/stock.json', function (data) {
     data.forEach(element => arrayProductos.push(element))
@@ -20,13 +40,6 @@ $.getJSON('/stock.json', function (data) {
 })
 
 
-selecTipo.addEventListener('click', () => {
-    if (selecTipo.value == 'Todos') {
-        mostrarProductos(arrayProductos)
-    } else {
-        mostrarProductos(arrayProductos.filter(element => element.tipo == selecTipo.value))
-    }
-})
 
 
 
@@ -138,13 +151,13 @@ function mostrarelCarrito(productoAgregar) {
             document.getElementById(`cantidad${productoAgregar.id}`).innerHTML = `
                                     <p id="cantidad${productoAgregar.id}">Cantidad:${productoAgregar.cantidad}</p> 
                 `
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: 'El producto se ha eliminado del carrito',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'El producto se ha eliminado del carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
             actualizarCarrito()
             localStorage.setItem('carrito', JSON.stringify(carrito))
         }
@@ -154,12 +167,13 @@ function mostrarelCarrito(productoAgregar) {
 
 }
 
+// recupera los productos del carrito desde local storage
 function recuperar() {
     let recuperoLS = JSON.parse(localStorage.getItem('carrito'))
     if (recuperoLS) {
         recuperoLS.forEach(item => {
             carrito.push(item)
-            mostrarrlCarrito(item)
+            mostrarelCarrito(item)
             actualizarCarrito()
         })
     }
@@ -167,7 +181,7 @@ function recuperar() {
 
 
 
-/////////////////////////////
+///////////////////////////// Actualiza cantidad y precio en el carrito
 function actualizarCarrito() {
     contadorCarrito.innerText = carrito.reduce((acc, el) => acc + el.cantidad, 0) // incrementa la cantidad de productos seleccionados
     precioTotal.innerText = carrito.reduce((acc, el) => acc + (el.precio * el.cantidad), 0) // multipica el precio por la cantidad de productos seleccionados
@@ -197,4 +211,3 @@ $('#btnComprar').on('click', () => {
     })
 })
 //funcion para que al comprar disminuya el numero de stock en el arrayProductos 
-//que en el modal de carrito se muestre lo ya almacenado en el storage///// carrito = JSON.parse(localStorage.getItem('carrito'))
