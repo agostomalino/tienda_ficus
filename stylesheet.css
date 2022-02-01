@@ -30,20 +30,6 @@ header{
     color:#C7B198;
 }
 
-nav{
-    background-color: #C7B198;
-    opacity: 80%;
-}
-.nav ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-left: 1em;
-    
-}
-.nav li{
-    margin-top: .5em;
-}
 
 .carousel-item{
     max-height: 80vh;
@@ -115,8 +101,8 @@ footer{
 h2{
     color: #C7B198;
     margin: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding:20px 10px 10px 10px;
+    text-align: center;
 }
 /* BUSCADOR DE ARTICULOS*/
 input{

@@ -20,7 +20,8 @@
 <body>
 
     <header class="sticky-top">
-        <h1>Ficus Cerámica</h1>
+        <h1 id="tituloFicus">Ficus Cerámica</h1>
+        <button type="button" id="botonfav" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFavoritos"><span id="btnFav">Favoritos</span></button>
         <button type="button" id="boton-carrito" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#miModal">
             <span class="material-icons-outlined">shopping_cart</span>
@@ -29,18 +30,12 @@
     </header>
     <!--BUSCADOR DE PRODUCTOS-->
 
+    <h2>Bienvenido a la Tiendita</h2>
     <div>
         <input type="text" name="buscador" id="buscador" placeholder="Buscar Producto...">
     </div>
 
-    <!--DARK MODE-->
-    <nav class="nav">
-        <ul>
-            <li><button id="btnDarkMode" class="btn btn-dark">Dark Mode</button></li>
-            <li><button id="btnLightMode" class="btn btn-light">Light Mode</button></li>
-        </ul>
-    </nav>
-
+    <!-- Carousel de fotos -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -62,15 +57,36 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
+<!-- Contenedor de Productos -->
     <main class="main">
-        <h2>Bienvenido a la Tiendita</h2>
         <div id="contenedorProductos" class="row">
 
         </div>
-
     </main>
 
+    <!-- MODAL FAVORITOS -->
+    <div class="modal fade" id="modalFavoritos" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-title">Favoritos</h3>
+                    <button id="favCerrar" type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label>
+                    </button>
+
+                </div>
+
+                <div class="modal-body" id="favContenedor">
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal CARRITO -->
     <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -107,7 +123,7 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/darkMode.js"></script>
+    <script src="/js/animacion.js"></script>
     <script src="/js/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

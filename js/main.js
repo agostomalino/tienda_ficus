@@ -1,37 +1,40 @@
 let carrito = [];
 let arrayProductos = [];
+let favoritos = [];
 
 
-const contenedorProductos = document.getElementById('contenedorProductos')
-const contenedorCarrito = document.getElementById('carritoContenedor')
+const contenedorProductos = document.getElementById('contenedorProductos');
+const contenedorCarrito = document.getElementById('carritoContenedor');
 const botonComprar = document.getElementById('comprar');
-const contadorCarrito = document.getElementById('contadorCarrito')
-const precioTotal = document.getElementById('precioTotal')
+const contadorCarrito = document.getElementById('contadorCarrito');
+const precioTotal = document.getElementById('precioTotal');
 const buscador = document.getElementById('buscador');
+const contenedorFavs = document.getElementById('favContenedor');
+const btnFav = document.getElementById('btnFav');
 
 
 // Buscador filtro de articulos en la web
 buscador.addEventListener('change', (e) => {
-    
+
     let valorCapturado = e.target.value.toLowerCase();
     console.log(valorCapturado)
-    console.log(arrayProductos.filter(producto =>producto.tipo))
-    if(valorCapturado == 'todos' || valorCapturado == ""){
+    console.log(arrayProductos.filter(producto => producto.tipo))
+    if (valorCapturado == 'todos' || valorCapturado == "") {
         mostrarProductos(arrayProductos)
-    }else{
+    } else {
         mostrarProductos(arrayProductos.filter(producto => producto.tipo.toLowerCase() == valorCapturado))
     }
 })
 
-buscador.addEventListener('keyup', (e)=>{
+buscador.addEventListener('keyup', (e) => {
     if (e.key === "Escape") {
         e.target.value = ""
         mostrarProductos(arrayProductos)
-    }                  
+    }
 })
-                    
-                    
-                    
+
+
+
 ///////////////////////////////metodo get ajax para mostrar productos desde un JSON local
 $.getJSON('/stock.json', function (data) {
     data.forEach(element => arrayProductos.push(element))
@@ -63,14 +66,20 @@ function mostrarProductos(array) {
                         <p class="card-text">Color: ${element.color}</p>
                         <p class="card-text">Tamaño: ${element.tamano}</p>
                         <p class="card-text">$${element.precio}</p>
+                        <a href="#" id="fav${element.id}" class="btn btn-primary">Agregar a Favoritos</a>
                         <a href="#" id="boton${element.id}" class="btn btn-primary">Agregar al carrito</a>
                     </div>
                 </div>
         `
         contenedorProductos.appendChild(div)
+        let btnAgregarFav = document.getElementById(`fav${element.id}`)
+        btnAgregarFav.addEventListener('click', () => {
+            agregarAfav(element.id)
 
+        })
+
+        //
         let botonAgregar = document.getElementById(`boton${element.id}`)
-
         botonAgregar.addEventListener('click', () => {
             agregarAlCarro(element.id)
         })
@@ -78,6 +87,37 @@ function mostrarProductos(array) {
     });
 
 }
+/////////////////////////////Agregar a favoritos
+function agregarAfav(id) {
+    let prodFav = arrayProductos.find(element => element.id == id)
+    favoritos.push(prodFav)
+    localStorage.setItem('favoritos', JSON.stringify(favoritos))
+    let localFav = JSON.parse(localStorage.getItem('favoritos'))
+    console.log(localFav)
+
+    localFav.forEach(element => {
+        let div = document.createElement('div')
+        div.classList.add('productoEnFav')
+        div.innerHTML = ` 
+            <p>${element.nombre}</p>
+            <img src="${element.img}" alt="producto ${element.nombre}" width="180px" height="auto">
+            <button id="eliminarFav${element.id}" class="btn btn-danger">Eliminar de fav</button>
+            `
+        contenedorFavs.appendChild(div);
+
+        // Elimina producto de lista de favoritos
+        let btnEliminarFav = document.getElementById(`eliminarFav${element.id}`)
+        btnEliminarFav.addEventListener('click', () => {
+            console.log(`eliminarFav${element.id}`)
+
+            btnEliminarFav.parentElement.remove()
+            favoritos = favoritos.filter(element => element.id != prodFav.id)
+
+        })
+    })
+
+}
+
 
 /////////////////////////////Agrega al carrito
 function agregarAlCarro(id) {
@@ -94,11 +134,9 @@ function agregarAlCarro(id) {
             showConfirmButton: false,
             timer: 1500
         })
-
         actualizarCarrito()
     } else {
-
-        let productoAgregar = arrayProductos.find(element => element.id == id) //busca el boton para agregar al carro y devuelve el obj de ese producto
+        let productoAgregar = arrayProductos.find(element => element.id == id)
         carrito.push(productoAgregar)
 
         Swal.fire({
@@ -136,7 +174,7 @@ function mostrarelCarrito(productoAgregar) {
         if (productoAgregar.cantidad == 1) {
             btnEliminar.parentElement.remove()
             carrito = carrito.filter(element => element.id != productoAgregar.id)
-            localStorage.setItem('carrito', JSON.stringify(carrito))
+            //localStorage.setItem('carrito', JSON.stringify(carrito)) BORRAR FUNCIONA IGUAL
             Swal.fire({
                 position: 'top-end',
                 icon: 'error',
@@ -167,7 +205,7 @@ function mostrarelCarrito(productoAgregar) {
 
 }
 
-// recupera los productos del carrito desde local storage
+//////////// Recupera los productos del carrito desde local storage
 function recuperar() {
     let recuperoLS = JSON.parse(localStorage.getItem('carrito'))
     if (recuperoLS) {
@@ -196,7 +234,8 @@ botonComprar.innerHTML = `<button id="btnComprar" class="btn btn-primary">Compra
 
 $('#btnComprar').on('click', () => {
     $.post("http://jsonplaceholder.typicode.com/posts", JSON.stringify(carrito), function (data, estado) {
-        console.log(data)
+        console.log(data);
+        console.log(estado);
         if (estado) {
             $('#carritoContenedor').empty()
             $('#carritoContenedor').append('<p>Su compra ha sido realizada</p>')
@@ -206,8 +245,5 @@ $('#btnComprar').on('click', () => {
             actualizarCarrito()
 
         }
-
-
     })
 })
-//funcion para que al comprar disminuya el numero de stock en el arrayProductos 
