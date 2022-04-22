@@ -20,39 +20,48 @@ header{
     justify-content: space-between;
     align-items: center;
     font-size: 25px;
-    height: 15vh;
-    opacity: 80%;
-    
+    height: 17vh;
+    opacity: 80%;  
+}
+#contButtnsHeader{
+    display: flex;
+    justify-items: end;
+    align-items: baseline;
+}
+#headerButtons{
+    display: flex;
+    flex-direction: row;
+}
+#botonFav{
+    background-color:#C7B198;
+    color: #F0ECE3 ;
+    padding: 1rem;
+    margin: .5rem;
+    border-color: #F0ECE3;
+}
+#boton-carrito{
+    background-color:#C7B198;
+    color: #F0ECE3 ;
+    font-size: 1rem;
+    padding: .8rem;
+    margin: .5rem;
+    align-items: baseline;
+    justify-content: center;
+    align-content: center;
+    border-color: #F0ECE3;
 }
 
 .darkMode{
     background-color:#483434;
     color:#C7B198;
 }
-
-
 .carousel-item{
     max-height: 80vh;
 }
-
 .main{
     padding: 20px 10px 10px 10px;
     display: grid;
 }
-
-
-#boton-carrito{
-    background-color: #F0ECE3;
-    color: #C7B198;
-    font-size: 25px;
-    padding: 10px;
-    align-items: baseline;
-    justify-content: center;
-    align-content: center;
-    border-color: #F0ECE3;
-    
-}
-
 a{
     text-decoration: none;
     color: #406882;
@@ -105,11 +114,21 @@ h2{
     text-align: center;
 }
 /* BUSCADOR DE ARTICULOS*/
+#contBuscador{
+    padding:.5rem;
+    border-radius: .2em;
+    align-items: baseline;
+}
+#lupita{
+    color: #F0ECE3;
+    font-size: 1rem;
+}
 input{
-    width: 100vw;
-    padding: 10px;
+    width: 12rem;
+    padding: 5px;
     outline: none;
-    border: 5px solid #CCD1E4;
-    font-weight: 600;
+    border: 1px solid #F0ECE3;;
+    border-radius: .2em;
+    font-size: 1rem;
 }
 

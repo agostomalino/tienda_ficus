@@ -2,7 +2,6 @@ let carrito = [];
 let arrayProductos = [];
 let favoritos = [];
 
-
 const contenedorProductos = document.getElementById('contenedorProductos');
 const contenedorCarrito = document.getElementById('carritoContenedor');
 const botonComprar = document.getElementById('comprar');
@@ -11,7 +10,6 @@ const precioTotal = document.getElementById('precioTotal');
 const buscador = document.getElementById('buscador');
 const contenedorFavs = document.getElementById('favContenedor');
 const btnFav = document.getElementById('btnFav');
-
 
 // Buscador filtro de articulos en la web
 buscador.addEventListener('change', (e) => {
@@ -32,20 +30,12 @@ buscador.addEventListener('keyup', (e) => {
         mostrarProductos(arrayProductos)
     }
 })
-
-
-
 ///////////////////////////////metodo get ajax para mostrar productos desde un JSON local
 $.getJSON('/stock.json', function (data) {
     data.forEach(element => arrayProductos.push(element))
     mostrarProductos(arrayProductos);
     recuperar()
 })
-
-
-
-
-
 ////////////////////////////////// MUESTRA PRODUCTOS EN EL DOM
 
 function mostrarProductos(array) {
@@ -66,8 +56,8 @@ function mostrarProductos(array) {
                         <p class="card-text">Color: ${element.color}</p>
                         <p class="card-text">Tamaño: ${element.tamano}</p>
                         <p class="card-text">$${element.precio}</p>
-                        <a href="#" id="fav${element.id}" class="btn btn-primary">Agregar a Favoritos</a>
-                        <a href="#" id="boton${element.id}" class="btn btn-primary">Agregar al carrito</a>
+                        <a href="#" id="fav${element.id}" class="btn btn-primary"><i class="fi fi-rs-heart"></i></a>
+                        <a href="#" id="boton${element.id}" class="btn btn-primary"><i class="fi fi-rs-shopping-cart-add"></i></a>
                     </div>
                 </div>
         `
@@ -117,8 +107,6 @@ function agregarAfav(id) {
     })
 
 }
-
-
 /////////////////////////////Agrega al carrito
 function agregarAlCarro(id) {
     let verificar = carrito.find(element => element.id == id)
@@ -153,9 +141,7 @@ function agregarAlCarro(id) {
     }
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
-
 /////////////////////////////logica mostrar y eliminar producto del carrito separada
-
 function mostrarelCarrito(productoAgregar) {
 
     let divCreado = document.createElement('div')
@@ -201,10 +187,7 @@ function mostrarelCarrito(productoAgregar) {
         }
 
     })
-
-
 }
-
 //////////// Recupera los productos del carrito desde local storage
 function recuperar() {
     let recuperoLS = JSON.parse(localStorage.getItem('carrito'))
@@ -216,9 +199,6 @@ function recuperar() {
         })
     }
 }
-
-
-
 ///////////////////////////// Actualiza cantidad y precio en el carrito
 function actualizarCarrito() {
     contadorCarrito.innerText = carrito.reduce((acc, el) => acc + el.cantidad, 0) // incrementa la cantidad de productos seleccionados
@@ -228,7 +208,6 @@ function actualizarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
 }
-
 //////////////////////////// Simulacion de compra Ajax metodo POST
 botonComprar.innerHTML = `<button id="btnComprar" class="btn btn-primary">Comprar</button>`
 
