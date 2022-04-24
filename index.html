@@ -19,13 +19,12 @@
 </head>
 
 <body>
-
     <header class="sticky-top" id="encabezado">
         <h1 id="tituloFicus">Ficus Cerámica</h1>
         <div id="contButtnsHeader">
             <div id="contBuscador">
                 <i id="lupita" class="fi fi-rs-search"></i>
-                <input type="text" name="buscador" id="buscador" placeholder="Buscar Producto...">
+                <input type="text" name="buscador" id="buscador" placeholder="Buscar Producto">
             </div>
             <div id="headerButtons">
                 <button type="button" id="botonFav" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalFavoritos"><span id="btnFav"><i class="fi fi-ss-heart"></i></span></button>
@@ -37,11 +36,6 @@
             </div>
         </div>
     </header>
-    <!--BUSCADOR DE PRODUCTOS-->
-
-    <h2>Bienvenido a la Tiendita</h2>
-
-
     <!-- Carousel de fotos -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -55,6 +49,9 @@
                 <img src="/fotosProduct/portadaFicus2.jpeg" class="d-block w-100" alt="los creadores de ficus">
             </div>
         </div>
+        <div id="greeting">
+            <h2>Bienvenido a la tienda Ficus</h2>
+        </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -63,15 +60,19 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+        <div id="contBtnVer">
+            <a href="#contenedorProductos" id="linkVer">
+                <p>Ver Productos</p>
+            </a>
+        </div>
     </div>
 <!-- Contenedor de Productos -->
     <main class="main">
         <div id="contenedorProductos" class="row">
-
         </div>
     </main>
 
-    <!-- MODAL FAVORITOS -->
+ <!-- MODAL FAVORITOS -->
     <div class="modal fade" id="modalFavoritos" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -79,21 +80,14 @@
                     <h3 class="modal-title" id="modal-title">Favoritos</h3>
                     <button id="favCerrar" type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label>
                     </button>
-
                 </div>
-
                 <div class="modal-body" id="favContenedor">
-
-
                 </div>
-
-
             </div>
-
         </div>
     </div>
 
-    <!-- Modal CARRITO -->
+<!-- Modal CARRITO -->
     <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,27 +95,17 @@
                     <h3 class="modal-title" id="modal-title">Carrito</h3>
                     <button id="carritoCerrar" type="button" class="btn btn-close" data-bs-dismiss="modal"
                         aria-label></button>
-
                 </div>
-
-                <div class="modal-body" id="carritoContenedor">
-
-                </div>
-
+                <div class="modal-body" id="carritoContenedor"></div>
                 <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
                 <div id="comprar"></div>
-
-
             </div>
-
         </div>
     </div>
 
     <footer>
-
         <a href="https://www.instagram.com/ficusceramica/?hl=es">Instagram</a>
     </footer>
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
@@ -134,7 +118,5 @@
     <script src="/js/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
 </body>
-
 </html>

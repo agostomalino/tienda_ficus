@@ -4,14 +4,15 @@
     box-sizing: border-box;
 }
 body{
-    font-family: 'Quicksand', sans-serif;
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family:Favorit,Helvetica,sans;
     background-color: #F0ECE3;
     color: #1B2021;
     height: auto;
     width: 100vw;
     transition: background-color 700ms ease;
 }
-
+/* HEADER */
 header{
     padding:15px;
     background-color: #C7B198;
@@ -63,6 +64,7 @@ header{
     display: grid;
 }
 a{
+    font-family: Basis, Arial, sans-serif;
     text-decoration: none;
     color: #406882;
 }
@@ -72,16 +74,25 @@ a{
 }
 
 .card-title{
-    font-weight: bolder;
+    font-weight: 520;
+    letter-spacing: .1em;
+    word-spacing: .2em;
+    color:#406882;
+    text-decoration:underline;
 }
 
 .btn-primary{
     background-color: #406882;
     border-color: #406882;
 }
+.btnFav:hover, .btnShop:hover{
+    background-color:#3a586c;
+}
 
 .modal-content{
     background-color: #F0ECE3;
+    font-family: Basis, Arial, sans-serif;
+
 }
 
 .modal-body{
@@ -98,21 +109,6 @@ a{
     padding-left: 20px;
 }
 
-
-footer{
-    padding: 20px;
-    background-color: #C7B198;
-    display: flex;
-    justify-content: center;
-
-}
-
-h2{
-    color: #C7B198;
-    margin: auto;
-    padding:20px 10px 10px 10px;
-    text-align: center;
-}
 /* BUSCADOR DE ARTICULOS*/
 #contBuscador{
     padding:.5rem;
@@ -127,8 +123,54 @@ input{
     width: 12rem;
     padding: 5px;
     outline: none;
-    border: 1px solid #F0ECE3;;
+    border: 1px solid #F0ECE3;
     border-radius: .2em;
-    font-size: 1rem;
+    font-family: Basis, Arial, sans-serif;
+    font-size: .8rem;
+}
+
+/* FOOTER */
+footer{
+    padding: 20px;
+    background-color: #C7B198;
+    display: flex;
+    justify-content: center;
+
+}
+
+/* Slider & greeting */
+
+#greeting{
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    width: auto;
+    z-index: 99;
+    margin: auto;
+}
+#greeting h2{
+    color:#F0ECE3;
+    margin: auto;
+    padding:20px 10px 10px 10px;
+    text-align: center;
+}
+#contBtnVer{
+    width: 30%;
+    position: absolute;
+    bottom: 2.5rem;
+    left: 30rem;
+    z-index: 99;
+    text-align: center;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+}
+#linkVer{
+    color:#F0ECE3;
+    display: flex;
+}
+#linkVer :hover{
+    color:#afada8 ;
+    text-decoration: underline;
 }
 

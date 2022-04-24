@@ -55,9 +55,9 @@ function mostrarProductos(array) {
                         <h5 class="card-title">${element.nombre}</h5>
                         <p class="card-text">Color: ${element.color}</p>
                         <p class="card-text">Tamaño: ${element.tamano}</p>
-                        <p class="card-text">$${element.precio}</p>
-                        <a href="#" id="fav${element.id}" class="btn btn-primary"><i class="fi fi-rs-heart"></i></a>
-                        <a href="#" id="boton${element.id}" class="btn btn-primary"><i class="fi fi-rs-shopping-cart-add"></i></a>
+                        <p class="card-text">Precio: $${element.precio}</p>
+                        <a href="#" id="fav${element.id}" class="btnFav btn btn-primary"><i class="fi fi-rs-heart"></i></a>
+                        <a href="#" id="boton${element.id}" class="btnShop btn btn-primary"><i class="fi fi-rs-shopping-cart-add"></i></a>
                     </div>
                 </div>
         `
@@ -65,7 +65,6 @@ function mostrarProductos(array) {
         let btnAgregarFav = document.getElementById(`fav${element.id}`)
         btnAgregarFav.addEventListener('click', () => {
             agregarAfav(element.id)
-
         })
 
         //
@@ -185,7 +184,6 @@ function mostrarelCarrito(productoAgregar) {
             actualizarCarrito()
             localStorage.setItem('carrito', JSON.stringify(carrito))
         }
-
     })
 }
 //////////// Recupera los productos del carrito desde local storage
@@ -203,7 +201,6 @@ function recuperar() {
 function actualizarCarrito() {
     contadorCarrito.innerText = carrito.reduce((acc, el) => acc + el.cantidad, 0) // incrementa la cantidad de productos seleccionados
     precioTotal.innerText = carrito.reduce((acc, el) => acc + (el.precio * el.cantidad), 0) // multipica el precio por la cantidad de productos seleccionados
-
 
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
