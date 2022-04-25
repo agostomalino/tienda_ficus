@@ -24,6 +24,9 @@ header{
     height: 17vh;
     opacity: 80%;  
 }
+#tituloFicus{
+    letter-spacing: .4em;
+}
 #contButtnsHeader{
     display: flex;
     justify-items: end;
@@ -51,11 +54,10 @@ header{
     align-content: center;
     border-color: #F0ECE3;
 }
-
-.darkMode{
+/* .darkMode{
     background-color:#483434;
     color:#C7B198;
-}
+} */
 .carousel-item{
     max-height: 80vh;
 }
@@ -129,17 +131,7 @@ input{
     font-size: .8rem;
 }
 
-/* FOOTER */
-footer{
-    padding: 20px;
-    background-color: #C7B198;
-    display: flex;
-    justify-content: center;
-
-}
-
 /* Slider & greeting */
-
 #greeting{
     position: absolute;
     top: 3rem;
@@ -167,10 +159,48 @@ footer{
 }
 #linkVer{
     color:#F0ECE3;
+    font-size: 1.5rem;
     display: flex;
 }
 #linkVer :hover{
-    color:#afada8 ;
+    color:#afada8;
     text-decoration: underline;
+}
+
+
+/* FOOTER */
+footer{
+    margin-top: 2rem;
+    padding: 2rem;
+    padding-bottom: 0;
+    background-color: #C7B198;
+    color: #F0ECE3;
+    opacity: 80%;
+}
+.containerF{
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    width: 45%;
+    padding: 2rem;
+}
+#infoFoot{
+    margin-right: 4rem;
+    text-align: justify;
+}
+#pFoot{
+    font-size: .8em;
+}
+#aFoot{
+    font-size: .8em;
+    color: #F0ECE3;
+}
+#aFoot:hover{
+    text-decoration: underline;
+}
+.small{
+    text-align:right;
+    font-size: .7em;
+    margin: 0;
 }
 

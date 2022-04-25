@@ -49,15 +49,17 @@ function mostrarProductos(array) {
         div.classList.add('col-lg-3')
         div.innerHTML += `
     
-                <div class="card" style="width: 18rem;">
+                <div class="cardP card" style="width: 18rem;">
                     <img src="${element.img}" class="card-img-top" alt="${element.img}">
                     <div class="card-body">
                         <h5 class="card-title">${element.nombre}</h5>
                         <p class="card-text">Color: ${element.color}</p>
-                        <p class="card-text">Tamaño: ${element.tamano}</p>
+                        <p class="card-text">Tamaño: ${element.tamaño}</p>
                         <p class="card-text">Precio: $${element.precio}</p>
-                        <a href="#" id="fav${element.id}" class="btnFav btn btn-primary"><i class="fi fi-rs-heart"></i></a>
-                        <a href="#" id="boton${element.id}" class="btnShop btn btn-primary"><i class="fi fi-rs-shopping-cart-add"></i></a>
+                        <div class="containerButtns">
+                            <a href="#" id="fav${element.id}" class="btnFav btn btn-primary"><i class="fi fi-rs-heart"></i></a>
+                            <a href="#" id="boton${element.id}" class="btnShop btn btn-primary"><i class="fi fi-rs-shopping-cart-add"></i></a>
+                        </div>
                     </div>
                 </div>
         `
