@@ -45,7 +45,7 @@ function mostrarProductos(array) {
         let div = document.createElement('div')
         div.classList.add('col-12')
         div.classList.add('col-sm-6')
-        div.classList.add('col-md-4')
+        div.classList.add('col-md-6')
         div.classList.add('col-lg-3')
         div.innerHTML += `
     

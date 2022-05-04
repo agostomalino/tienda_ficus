@@ -2,6 +2,7 @@
     *{
         margin: 0;
         padding: 0;
+        height: auto;
     }
 
 /* header */
@@ -89,5 +90,51 @@
            padding: 0;
            width: auto;
        }
+
+}
+/*tabletas en modo vertical  */
+@media (max-width:768px){
+    #encabezado{
+        width: 100vw;
+        height: 15vh;
+    }
+    header #tituloFicus{
+        position: absolute;
+        top:5px;
+    }
+    header #contButtnsHeader{
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+    header #contBuscador{
+        padding-right:1rem;
+    }
+    #buscador{
+        width: 15rem;
+        font-size: 16px;
+    }
+    /* carousel */
+    div #contBtnVer{
+        left: 11rem;
+    }
+    /* contenedor productos */
+    #contenedorProductos{
+        padding: 1rem;
+    }
+    div .col
+
+    footer{
+        height: 16rem;
+        width: 100vw;
+        padding: 0;
+    }
+    footer .containerF{
+        flex-direction: column;
+        width: 80%;
+    }
+    footer #pFoot{
+        font-size: 16px;
+    }
 
 }
